@@ -3,5 +3,14 @@ export default {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
-  projects: []
+  projects: [
+    {
+      displayName: 'backend',
+      rootDir: 'projects/backend'
+    },
+    {
+      displayName: 'frontend',
+      rootDir: 'projects/frontend'
+    }
+  ]
 }
