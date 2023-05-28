@@ -11,7 +11,10 @@ export default {
       transform: {
         '^.+\\.ts?$': 'ts-jest'
       },
-      preset: 'ts-jest'
+      preset: 'ts-jest',
+      moduleNameMapper: {
+        '@core/(.*)$': '<rootDir>src/core/$1'
+      }
     },
     {
       displayName: 'frontend',

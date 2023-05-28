@@ -7,9 +7,12 @@
     "lint": "eslint src/**/*.ts"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "class-validator": "^0.14.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "eslint": "^8.0.1",
@@ -20,6 +23,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "prettier": "^2.8.8",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "*"
   }
 }
