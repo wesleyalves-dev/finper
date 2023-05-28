@@ -14,7 +14,8 @@ module.exports = {
     project: 'tsconfig.json'
   },
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    '@typescript-eslint/no-extraneous-class': 'off'
   },
   ignorePatterns: ['.eslintrc.js']
 }

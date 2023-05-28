@@ -6,8 +6,11 @@
   "scripts": {
     "lint": "eslint src/**/*.ts"
   },
-  "dependencies": {},
+  "dependencies": {
+    "uuid": "^9.0.0"
+  },
   "devDependencies": {
+    "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.8.0",
