@@ -9,6 +9,9 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.14.0",
+    "mysql2": "^3.3.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.16",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
