@@ -6,7 +6,6 @@ import {
   validateEntity
 } from '@core/@utils/validators'
 import { PASSWORD_REGEX } from '@core/@utils/regex'
-import { ApplicationError } from '@core/@shared/application.error'
 
 import type { UserData } from './user.entity'
 
@@ -33,12 +32,6 @@ export class UserValidation {
   }
 
   validate(): void {
-    const errors = validateEntity(this)
-
-    if (errors.length === 0) return
-
-    throw new ApplicationError('Validation error', 'INTERNAL_SERVER_ERROR', {
-      validation: errors
-    })
+    validateEntity(this)
   }
 }

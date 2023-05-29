@@ -1,2 +1,2 @@
 export * from 'class-validator'
-export { validateEntity } from './validate'
+export { validateEntity } from './validate-entity'

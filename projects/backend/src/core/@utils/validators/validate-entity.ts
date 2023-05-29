@@ -3,6 +3,8 @@ import {
   type ValidationError as ClassValidationError
 } from 'class-validator'
 
+import { ApplicationError } from '@core/@shared/application.error'
+
 interface ValidationError {
   property: string
   value: any
@@ -19,7 +21,7 @@ function formatError(error: ClassValidationError): ValidationError {
   }
 }
 
-export function validateEntity(object: object): ValidationError[] {
+export function validateEntity(object: object): void {
   const result = classValidate(object, {
     forbidNonWhitelisted: true,
     forbidUnknownValues: true
@@ -27,5 +29,9 @@ export function validateEntity(object: object): ValidationError[] {
 
   const errors = result.map(formatError)
 
-  return errors
+  if (errors.length === 0) return
+
+  throw new ApplicationError('Validation error', 'INTERNAL_SERVER_ERROR', {
+    validation: errors
+  })
 }
