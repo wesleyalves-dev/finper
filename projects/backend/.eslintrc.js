@@ -16,7 +16,9 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     '@typescript-eslint/no-extraneous-class': 'off',
-    '@typescript-eslint/method-signature-style': 'off'
+    '@typescript-eslint/method-signature-style': 'off',
+    '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/no-throw-literal': 'off'
   },
   ignorePatterns: ['.eslintrc.js']
 }
