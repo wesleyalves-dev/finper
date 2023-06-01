@@ -39,13 +39,11 @@ describe('UserMysqlRepository', () => {
     })
 
     it('espera lançar um erro quando o objeto não for encontrado', async () => {
-      try {
-        await repository.findOne({
-          where: { username: 'jane.doe' }
-        })
-      } catch (err: any) {
-        expect(err?.message).toBe('Object not found')
-      }
+      const output = await repository.findOne({
+        where: { username: 'jane.doe' }
+      })
+
+      expect(output).toBeUndefined()
     })
   })
 })

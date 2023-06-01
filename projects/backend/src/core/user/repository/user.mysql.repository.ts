@@ -14,13 +14,11 @@ export class UserMysqlRepository implements UserRepository {
     this.repository = database.client.getRepository(UserModel)
   }
 
-  async findOne(options: FindOneOptions<User>): Promise<User> {
+  async findOne(options: FindOneOptions<User>): Promise<User | undefined> {
     const { where } = options
     const data = await this.repository.findOne({ where })
 
-    if (data === null) {
-      throw new Error('Object not found')
-    }
+    if (data === null) return
 
     const user = new User(
       {
