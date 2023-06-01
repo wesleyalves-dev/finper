@@ -7,7 +7,9 @@ export interface FindOneOptions<Entity> {
 export abstract class Repository<Entity> {
   abstract get?(id: string): Promise<Entity>
 
-  abstract findOne?(options: FindOneOptions<Entity>): Promise<Entity>
+  abstract findOne?(
+    options: FindOneOptions<Entity>
+  ): Promise<Entity | undefined>
 
   abstract save?(data: Entity): Promise<void>
 
