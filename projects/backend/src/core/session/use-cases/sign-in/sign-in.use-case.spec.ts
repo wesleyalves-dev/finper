@@ -28,15 +28,16 @@ describe('SignInUseCase', () => {
         }
       }
 
-      try {
+      const badFn = async (): Promise<any> =>
         await signInUserCase.execute(input)
-      } catch (err: any) {
-        expect(err).toMatchObject({
+
+      await expect(badFn()).rejects.toThrow(
+        expect.objectContaining({
           message: 'User or password incorrect',
           code: 'AUTHENTICATION'
         })
-        expect(sessionTokenMocked.sign).not.toBeCalled()
-      }
+      )
+      expect(sessionTokenMocked.sign).not.toBeCalled()
     })
 
     it('espera lançar um erro quando a senha estiver incorreta', async () => {
@@ -48,15 +49,16 @@ describe('SignInUseCase', () => {
         }
       }
 
-      try {
+      const badFn = async (): Promise<any> =>
         await signInUserCase.execute(input)
-      } catch (err: any) {
-        expect(err).toMatchObject({
+
+      await expect(badFn()).rejects.toThrow(
+        expect.objectContaining({
           message: 'User or password incorrect',
           code: 'AUTHENTICATION'
         })
-        expect(sessionTokenMocked.sign).not.toBeCalled()
-      }
+      )
+      expect(sessionTokenMocked.sign).not.toBeCalled()
     })
 
     it('espera retornar um objeto com os tokens de autorização', async () => {

@@ -38,11 +38,11 @@ describe('SessionMysqlRepository', () => {
     })
 
     it('espera lançar um erro quando o objeto não for encontrado', async () => {
-      try {
+      const sessionModel = { id: '96216c70-ecbd-48b1-834a-5c40a06438c5' }
+      const badFn = async (): Promise<any> =>
         await repository.get(sessionModel.id)
-      } catch (err: any) {
-        expect(err?.message).toBe('Object not found')
-      }
+
+      await expect(badFn()).rejects.toThrow('Object not found')
     })
   })
 
