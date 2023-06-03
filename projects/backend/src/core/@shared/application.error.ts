@@ -1,4 +1,7 @@
-export type ErrorCode = 'INTERNAL_SERVER_ERROR' | 'VALIDATION'
+export type ErrorCode =
+  | 'INTERNAL_SERVER_ERROR'
+  | 'VALIDATION'
+  | 'AUTHENTICATION'
 
 export type ErrorDetails = Record<string, any>
 

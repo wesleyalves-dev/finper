@@ -1,1 +1,1 @@
-export type { SessionToken } from './session-token'
+export type { SessionToken, SignOutput, VerifyOutput } from './session-token'

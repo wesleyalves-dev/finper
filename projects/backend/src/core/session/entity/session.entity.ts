@@ -13,7 +13,12 @@ export class Session extends Entity {
 
   private readonly _expireIn: Date
 
-  constructor(data: SessionData, id: string, createdAt: Date, updatedAt: Date) {
+  constructor(
+    data: SessionData,
+    id?: string,
+    createdAt?: Date,
+    updatedAt?: Date
+  ) {
     super(id, createdAt, updatedAt)
     this.validate(data)
     this._userId = data.userId
