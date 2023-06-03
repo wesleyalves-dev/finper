@@ -19,7 +19,7 @@ export class User extends Entity {
 
   private _password: string
 
-  constructor(data: UserData, id: string, createdAt: Date, updatedAt: Date) {
+  constructor(data: UserData, id?: string, createdAt?: Date, updatedAt?: Date) {
     super(id, createdAt, updatedAt)
     this.validate(data)
     this.setData(data)

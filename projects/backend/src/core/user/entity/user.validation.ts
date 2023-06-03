@@ -1,8 +1,8 @@
 import {
   IsString,
   IsNumberString,
+  IsPasswordOrHash,
   Length,
-  Matches,
   validateEntity
 } from '@core/@utils/validators'
 import { PASSWORD_REGEX } from '@core/@utils/regex'
@@ -23,7 +23,7 @@ export class UserValidation {
   @IsString()
   username: string
 
-  @Matches(PASSWORD_REGEX)
+  @IsPasswordOrHash(PASSWORD_REGEX)
   @IsString()
   password: string
 
