@@ -2,7 +2,7 @@ import type { Session } from '../entity/session.entity'
 import type { SessionRepository } from './session.repository'
 
 export class SessionInMemoryRepository implements SessionRepository {
-  private sessions: Session[] = []
+  sessions: Session[] = []
 
   async get(id: string): Promise<Session> {
     const data = this.sessions.find(session => session.id.value === id)
