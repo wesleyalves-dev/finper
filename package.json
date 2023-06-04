@@ -5,7 +5,11 @@
   "author": "Wesley Alves <wesley_alv@outlook.com>",
   "license": "UNLICENSED",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "backend": "yarn workspace @finper/backend",
+    "frontend": "yarn workspace @finper/frontend",
+    "start:dev": "yarn workspace @finper/backend start:dev"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^29.5.1",
