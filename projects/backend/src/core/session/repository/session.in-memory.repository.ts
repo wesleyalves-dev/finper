@@ -1,3 +1,5 @@
+import type { DeleteOptions } from '@core/@shared/repository'
+
 import type { Session } from '../entity/session.entity'
 import type { SessionRepository } from './session.repository'
 
@@ -20,5 +22,11 @@ export class SessionInMemoryRepository implements SessionRepository {
 
   async remove(id: string): Promise<void> {
     this.sessions = this.sessions.filter(session => session.id.value !== id)
+  }
+
+  async delete(options: DeleteOptions<Session>): Promise<void> {
+    this.sessions = this.sessions.filter(
+      session => session.id.value !== options.where?.id
+    )
   }
 }

@@ -1,14 +1,12 @@
-import type { FindOneOptions } from '@core/@shared/repository'
 import type { Database } from '@infra/database'
 
 import { sessionModel } from '../test/mysql.repository'
 import { session } from '../test/session'
-import type { Session } from '../entity/session.entity'
 import { SessionMysqlRepository } from './session.mysql.repository'
 
 describe('SessionMysqlRepository', () => {
   const typeormRepository = {
-    findOne: (options: FindOneOptions<Session>) => {
+    findOne: (options: any) => {
       return options.where?.id === sessionModel.id ? sessionModel : null
     },
     create: jest.fn(() => undefined),
@@ -23,6 +21,10 @@ describe('SessionMysqlRepository', () => {
     }
   }
   const repository = new SessionMysqlRepository(databaseMocked)
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
 
   describe('get', () => {
     it('espera retornar uma instância de session', async () => {
@@ -48,7 +50,7 @@ describe('SessionMysqlRepository', () => {
 
   describe('save', () => {
     it('espera persistir uma session', async () => {
-      await repository.save(session as any)
+      await repository.save(session)
 
       expect(typeormRepository.create).toBeCalledTimes(1)
       expect(typeormRepository.save).toBeCalledTimes(1)
@@ -56,8 +58,16 @@ describe('SessionMysqlRepository', () => {
   })
 
   describe('remove', () => {
-    it('espera excluir uma session', async () => {
-      await repository.remove({} as any)
+    it('espera chamar o método delete do repository', async () => {
+      await repository.remove(session.id.value)
+
+      expect(typeormRepository.delete).toBeCalledTimes(1)
+    })
+  })
+
+  describe('delete', () => {
+    it('espera chamar o método delete do repository', async () => {
+      await repository.delete({})
 
       expect(typeormRepository.delete).toBeCalledTimes(1)
     })

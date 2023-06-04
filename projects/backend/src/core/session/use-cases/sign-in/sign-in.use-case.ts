@@ -23,7 +23,7 @@ export class SignInUseCase extends UseCase<SignInInput, Promise<SignInOutput>> {
 
   async execute(input: SignInInput): Promise<SignInOutput> {
     const { username, password } = input.credential
-    const user = await this.userRepository.findOne({ where: { username } })
+    const user = await this.userRepository.findOne({ where: [{ username }] })
 
     if (user === undefined) {
       throw new SignInError.UserOrPasswordIncorrect()

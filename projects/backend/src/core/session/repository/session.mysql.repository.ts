@@ -1,11 +1,12 @@
 import type { DataSource, Repository } from 'typeorm'
 
 import type { Database } from '@infra/database'
+import type { DeleteOptions } from '@core/@shared/repository'
+import { Id } from '@core/@shared/id.object-value'
 
 import { Session } from '../entity/session.entity'
 import type { SessionRepository } from './session.repository'
 import { SessionModel } from './session.mysql.model'
-import { Id } from '@core/@shared/id.object-value'
 
 export class SessionMysqlRepository implements SessionRepository {
   private readonly repository: Repository<SessionModel>
@@ -48,5 +49,10 @@ export class SessionMysqlRepository implements SessionRepository {
 
   async remove(id: string): Promise<void> {
     await this.repository.delete({ id })
+  }
+
+  async delete(options: DeleteOptions<Session>): Promise<void> {
+    const { where = {} } = options
+    await this.repository.delete(where)
   }
 }

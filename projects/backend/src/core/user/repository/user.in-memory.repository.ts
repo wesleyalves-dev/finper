@@ -6,7 +6,7 @@ export class UserInMemoryRepository implements UserRepository {
   private readonly users: User[] = []
 
   async findOne(options: FindOneOptions<User>): Promise<User | undefined> {
-    const { username } = options.where ?? {}
+    const [{ username }] = options.where ?? []
 
     return this.users.find(user => user.username === username)
   }

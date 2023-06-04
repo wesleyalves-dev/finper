@@ -13,7 +13,7 @@ describe('UserMysqlRepository', () => {
       getRepository: () => {
         return {
           findOne: (options: FindOneOptions<User>) => {
-            return options.where?.username === user.username ? user : null
+            return options.where?.[0]?.username === user.username ? user : null
           }
         }
       }
@@ -24,7 +24,7 @@ describe('UserMysqlRepository', () => {
   describe('findOne', () => {
     it('espera retornar uma instância de user', async () => {
       const output = await repository.findOne({
-        where: { username: 'john.doe' }
+        where: [{ username: 'john.doe' }]
       })
 
       expect(output).toMatchObject({
@@ -40,7 +40,7 @@ describe('UserMysqlRepository', () => {
 
     it('espera lançar um erro quando o objeto não for encontrado', async () => {
       const output = await repository.findOne({
-        where: { username: 'jane.doe' }
+        where: [{ username: 'jane.doe' }]
       })
 
       expect(output).toBeUndefined()
