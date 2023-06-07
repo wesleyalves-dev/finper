@@ -1,7 +1,7 @@
 import { UseCase } from '@core/@shared/use-case'
-import type { UserRepository } from '@core/user/repository/user.repository'
-import type { SessionRepository } from '@core/session/repository/session.repository'
-import { Session } from '@core/session/entity/session.entity'
+import type { UserRepository } from '@core/user'
+import type { SessionRepository } from '@core/session'
+import { Session } from '@core/session'
 import { time } from '@core/@utils/time'
 
 import type { SessionToken } from '../../@shared/session-token'

@@ -1,8 +1,8 @@
 import { UseCase } from '@core/@shared/use-case'
 
-import type { SessionRepository } from '../../repository/session.repository'
-import type { SignOutInput } from './sign-out-input'
-import type { SignOutOutput } from './sign-out-output'
+import type { SessionRepository } from '../../repository'
+import type { SignOutInput } from './sign-out.input'
+import type { SignOutOutput } from './sign-out.output'
 
 export class SignOutUseCase extends UseCase<
   SignOutInput,

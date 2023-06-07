@@ -1,4 +1,4 @@
-import { SessionInMemoryRepository } from '../../repository/session.in-memory.repository'
+import { SessionInMemoryRepository } from '../../repository'
 import { session } from '../../test/session'
 import { SignOutUseCase } from './sign-out.use-case'
 

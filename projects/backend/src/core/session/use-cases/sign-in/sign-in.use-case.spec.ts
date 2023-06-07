@@ -1,6 +1,6 @@
-import { UserInMemoryRepository } from '@core/user/repository/user.in-memory.repository'
+import { UserInMemoryRepository } from '@core/user/repository'
 
-import { SessionInMemoryRepository } from '../../repository/session.in-memory.repository'
+import { SessionInMemoryRepository } from '../../repository'
 import { createSessionTokenMocked } from '../../test/session-token-mocked'
 import { user, password } from '../../test/user'
 import { SignInUseCase } from './sign-in.use-case'

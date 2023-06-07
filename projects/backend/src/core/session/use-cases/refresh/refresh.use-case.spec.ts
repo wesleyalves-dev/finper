@@ -1,4 +1,4 @@
-import { SessionInMemoryRepository } from '@core/session/repository/session.in-memory.repository'
+import { SessionInMemoryRepository } from '@core/session/repository'
 import { session, expiredSession } from '@core/session/test/session'
 import { createSessionTokenMocked } from '@core/session/test/session-token-mocked'
 import { RefreshUseCase } from './refresh.use-case'

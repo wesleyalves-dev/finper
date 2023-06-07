@@ -1,7 +1,7 @@
 import { UseCase } from '@core/@shared/use-case'
 
-import type { SessionRepository } from '../..//repository/session.repository'
-import type { SessionToken } from '../..//@shared/session-token'
+import type { SessionRepository } from '../../repository/session.repository'
+import type { SessionToken } from '../../@shared/session-token'
 import type { RefreshInput } from './refresh.input'
 import type { RefreshOutput } from './refresh.output'
 import { RefreshError } from './refresh.error'
