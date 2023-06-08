@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken'
 
+import type { SessionConfig } from '@config/config'
+
 import type {
   SessionToken,
   SignOptions,
@@ -8,17 +10,10 @@ import type {
   VerifyOutput
 } from './session-token'
 
-export interface JwtSessionTokenConfig {
-  algorithm: jwt.Algorithm
-  privateKey: string
-  publicKey: string
-  issuer?: string
-}
-
 export class JwtSessionToken implements SessionToken {
   private readonly jwt = jwt
 
-  constructor(private readonly config: JwtSessionTokenConfig) {}
+  constructor(private readonly config: SessionConfig) {}
 
   sign(options: SignOptions): SignOutput {
     const { algorithm, privateKey, issuer } = this.config
