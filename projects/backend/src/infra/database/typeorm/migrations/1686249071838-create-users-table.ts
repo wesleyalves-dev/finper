@@ -1,23 +1,33 @@
 import { type MigrationInterface, type QueryRunner, Table } from 'typeorm'
 
-export class CreateSessionsTable1686249493183 implements MigrationInterface {
+export class CreateUsersTable1686249071838 implements MigrationInterface {
   private readonly table = new Table({
-    name: 'fin_sessions',
+    name: 't01_users',
     columns: [
       {
         name: 'id',
         type: 'uuid',
         isPrimary: true,
-        primaryKeyConstraintName: 'pk_session_id'
+        primaryKeyConstraintName: 'pk_user_id'
       },
       {
-        name: 'user_id',
-        type: 'uuid',
+        name: 'full_name',
+        type: 'text',
+        isNullable: true
+      },
+      {
+        name: 'document',
+        type: 'text',
+        isNullable: true
+      },
+      {
+        name: 'username',
+        type: 'text',
         isNullable: false
       },
       {
-        name: 'expire_in',
-        type: 'timestamp',
+        name: 'password',
+        type: 'text',
         isNullable: false
       },
       {
@@ -31,14 +41,14 @@ export class CreateSessionsTable1686249493183 implements MigrationInterface {
         isNullable: false
       }
     ],
-    foreignKeys: [
+    uniques: [
       {
-        name: 'fk_session_user',
-        columnNames: ['user_id'],
-        referencedTableName: 'fin_users',
-        referencedColumnNames: ['id'],
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+        name: 'un_user_document',
+        columnNames: ['document']
+      },
+      {
+        name: 'un_user_username',
+        columnNames: ['username']
       }
     ]
   })

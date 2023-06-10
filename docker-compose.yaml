@@ -2,13 +2,12 @@ version: '3.8'
 
 services:
   database:
-    image: mysql:latest
+    image: postgres:latest
     ports:
-      - 3306:3306
+      - 5432:5432
     volumes:
-      - ./docker/mysql:/var/lib/mysql
+      - ./docker/postgres-data:/var/lib/postgresql/data
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASS}
-      MYSQL_DATABASE: ${DB_BASE}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_BASE}

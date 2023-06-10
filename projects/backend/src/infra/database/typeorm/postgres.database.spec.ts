@@ -1,11 +1,11 @@
-import { MysqlDatabase } from './mysql.database'
+import { PostgresDatabase } from './postgres.database'
 
-describe('MysqlDatabase', () => {
+describe('PostgresDatabase', () => {
   const dataSourceMocked = {
     initialize: jest.fn(async () => {}),
     destroy: jest.fn(async () => {})
   }
-  const database = new MysqlDatabase(dataSourceMocked as any)
+  const database = new PostgresDatabase(dataSourceMocked as any)
 
   describe('connect', () => {
     it('espera conectar no banco de dados', async () => {

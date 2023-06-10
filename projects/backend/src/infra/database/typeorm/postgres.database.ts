@@ -2,7 +2,7 @@ import type { DataSource } from 'typeorm'
 
 import type { Database } from '../database'
 
-export class MysqlDatabase implements Database<DataSource> {
+export class PostgresDatabase implements Database<DataSource> {
   constructor(readonly client: DataSource) {}
 
   async connect(): Promise<void> {

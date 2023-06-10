@@ -3,10 +3,12 @@ import path from 'node:path'
 
 import type { DatabaseConfig } from '@config/index'
 
-import type { Database } from './database'
-import { MysqlDatabase } from './mysql'
+import type { Database } from '../database'
+import { PostgresDatabase } from './postgres.database'
 
-export function makeDatabase(config: DatabaseConfig): Database<any> {
+export function makePostgresDatabase(
+  config: DatabaseConfig
+): Database<DataSource> {
   const {
     host,
     port,
@@ -16,18 +18,18 @@ export function makeDatabase(config: DatabaseConfig): Database<any> {
     log
   } = config
   const dataSource = new DataSource({
-    type: 'mysql',
+    type: 'postgres',
     host,
     port,
     database,
     username,
     password,
     migrationsRun: true,
-    entities: ['@core/**/repository/*.mysql.model.{js|ts}'],
-    migrations: [path.join(__dirname, 'mysql/migrations/{*.js|*.ts}')],
+    entities: ['@core/**/repository/*.mysql.model.{js,ts}'],
+    migrations: [path.join(__dirname, 'migrations/*.{js,ts}')],
     logging: log,
     logger: new SimpleConsoleLogger(log)
   })
 
-  return new MysqlDatabase(dataSource)
+  return new PostgresDatabase(dataSource)
 }
