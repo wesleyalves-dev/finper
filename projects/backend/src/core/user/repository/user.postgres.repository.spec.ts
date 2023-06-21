@@ -1,11 +1,11 @@
 import type { FindOneOptions } from '@core/@shared/repository'
 import type { Database } from '@infra/database'
 
-import { user } from '../test/mysql.repository'
+import { user } from '../test/postgres.repository'
 import type { User } from '../entity/user.entity'
-import { UserMysqlRepository } from './user.mysql.repository'
+import { UserPostgresRepository } from './user.postgres.repository'
 
-describe('UserMysqlRepository', () => {
+describe('UserPostgresRepository', () => {
   const databaseMocked: Database<any> = {
     connect: async () => {},
     disconnect: async () => {},
@@ -19,7 +19,7 @@ describe('UserMysqlRepository', () => {
       }
     }
   }
-  const repository = new UserMysqlRepository(databaseMocked)
+  const repository = new UserPostgresRepository(databaseMocked)
 
   describe('findOne', () => {
     it('espera retornar uma instância de user', async () => {

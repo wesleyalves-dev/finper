@@ -6,9 +6,9 @@ import { Id } from '@core/@shared/id.object-value'
 
 import { Session } from '../entity/session.entity'
 import type { SessionRepository } from './session.repository'
-import { SessionModel } from './session.mysql.model'
+import { SessionModel } from './session.postgres.model'
 
-export class SessionMysqlRepository implements SessionRepository {
+export class SessionPostgresRepository implements SessionRepository {
   private readonly repository: Repository<SessionModel>
 
   constructor(readonly database: Database<DataSource>) {

@@ -5,9 +5,9 @@ import type { Database } from '@infra/database'
 
 import { User } from '../entity/user.entity'
 import type { UserRepository } from './user.repository'
-import { UserModel } from './user.mysql.model'
+import { UserModel } from './user.postgres.model'
 
-export class UserMysqlRepository implements UserRepository {
+export class UserPostgresRepository implements UserRepository {
   private readonly repository: Repository<UserModel>
 
   constructor(readonly database: Database<DataSource>) {

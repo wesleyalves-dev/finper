@@ -1,10 +1,10 @@
 import type { Database } from '@infra/database'
 
-import { sessionModel } from '../test/mysql.repository'
+import { sessionModel } from '../test/postgres.repository'
 import { session } from '../test/session'
-import { SessionMysqlRepository } from './session.mysql.repository'
+import { SessionPostgresRepository } from './session.postgres.repository'
 
-describe('SessionMysqlRepository', () => {
+describe('SessionPostgresRepository', () => {
   const typeormRepository = {
     findOne: (options: any) => {
       return options.where?.id === sessionModel.id ? sessionModel : null
@@ -20,7 +20,7 @@ describe('SessionMysqlRepository', () => {
       getRepository: () => typeormRepository
     }
   }
-  const repository = new SessionMysqlRepository(databaseMocked)
+  const repository = new SessionPostgresRepository(databaseMocked)
 
   beforeEach(() => {
     jest.clearAllMocks()

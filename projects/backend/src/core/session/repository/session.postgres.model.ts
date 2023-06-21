@@ -6,7 +6,7 @@ import {
   UpdateDateColumn
 } from 'typeorm'
 
-@Entity({ name: 'fin_sessions' })
+@Entity({ name: 't02_sessions' })
 export class SessionModel {
   @PrimaryColumn('uuid')
   id: string
