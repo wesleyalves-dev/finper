@@ -1,13 +1,14 @@
-import { Module, Scope } from '@nestjs/common'
+import { Module, Global, Scope } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
 import type { DatabaseConfig } from '@config/index'
 import { makePostgresDatabase } from '@infra/database'
 
+@Global()
 @Module({
   providers: [
     {
-      provide: 'DatabaseModule',
+      provide: 'Database',
       scope: Scope.TRANSIENT,
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
@@ -18,6 +19,6 @@ import { makePostgresDatabase } from '@infra/database'
       }
     }
   ],
-  exports: ['DatabaseModule']
+  exports: ['Database']
 })
 export class DatabaseModule {}

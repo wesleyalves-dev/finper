@@ -25,7 +25,12 @@ export function makePostgresDatabase(
     username,
     password,
     migrationsRun: true,
-    entities: ['@core/**/repository/*.mysql.model.{js,ts}'],
+    entities: [
+      path.join(
+        __dirname,
+        '../../../core/**/repository/*.postgres.model.{js,ts}'
+      )
+    ],
     migrations: [path.join(__dirname, 'migrations/*.{js,ts}')],
     logging: log,
     logger: new SimpleConsoleLogger(log)
