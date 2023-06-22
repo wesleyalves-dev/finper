@@ -22,7 +22,7 @@ describe('SignInUseCase', () => {
   describe('execute', () => {
     it('espera lançar um erro quando o usuário não existir', async () => {
       const input = {
-        credential: {
+        credentials: {
           username,
           password
         }
@@ -43,7 +43,7 @@ describe('SignInUseCase', () => {
     it('espera lançar um erro quando a senha estiver incorreta', async () => {
       await userRepository.save(user)
       const input = {
-        credential: {
+        credentials: {
           username,
           password: 'incorrect-password'
         }
@@ -64,7 +64,7 @@ describe('SignInUseCase', () => {
     it('espera retornar um objeto com os tokens de autorização', async () => {
       await userRepository.save(user)
       const input = {
-        credential: {
+        credentials: {
           username,
           password
         }

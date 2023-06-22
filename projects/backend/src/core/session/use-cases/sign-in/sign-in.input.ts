@@ -1,5 +1,5 @@
 export class SignInInput {
-  credential: {
+  credentials: {
     username: string
     password: string
   }

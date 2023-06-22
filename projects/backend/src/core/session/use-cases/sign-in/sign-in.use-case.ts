@@ -22,7 +22,7 @@ export class SignInUseCase extends UseCase<SignInInput, Promise<SignInOutput>> {
   }
 
   async execute(input: SignInInput): Promise<SignInOutput> {
-    const { username, password } = input.credential
+    const { username, password } = input.credentials
     const user = await this.userRepository.findOne({ where: [{ username }] })
 
     if (user === undefined) {
