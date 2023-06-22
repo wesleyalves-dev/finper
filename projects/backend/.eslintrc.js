@@ -18,7 +18,8 @@ module.exports = {
     '@typescript-eslint/no-extraneous-class': 'off',
     '@typescript-eslint/method-signature-style': 'off',
     '@typescript-eslint/no-namespace': 'off',
-    '@typescript-eslint/no-throw-literal': 'off'
+    '@typescript-eslint/no-throw-literal': 'off',
+    '@typescript-eslint/consistent-type-imports': 'off'
   },
-  ignorePatterns: ['.eslintrc.js']
+  ignorePatterns: ['.eslintrc.js', 'dist']
 }
