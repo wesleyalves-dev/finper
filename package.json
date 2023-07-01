@@ -5,12 +5,19 @@
   "author": "Wesley Alves <wesley_alv@outlook.com>",
   "license": "UNLICENSED",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "backend": "yarn workspace @finper/backend",
+    "frontend": "yarn workspace @finper/frontend",
+    "start:dev": "yarn workspace @finper/backend start:dev",
+    "preversion": "git checkout main && git pull",
+    "postversion": "git push && git push --tags"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^29.5.1",
     "@types/node": "^20.2.5",
     "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
