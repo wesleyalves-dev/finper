@@ -8,7 +8,9 @@
   "scripts": {
     "backend": "yarn workspace @finper/backend",
     "frontend": "yarn workspace @finper/frontend",
-    "start:dev": "yarn workspace @finper/backend start:dev"
+    "start:dev": "yarn workspace @finper/backend start:dev",
+    "preversion": "git checkout main && git pull",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {},
   "devDependencies": {
