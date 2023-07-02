@@ -15,7 +15,7 @@ export function getConfig(): AppConfig {
     },
     database: {
       host: env.get('DB_HOST').default('localhost').asString(),
-      port: env.get('DB_PORT').default(3606).asInt(),
+      port: env.get('DB_PORT').default(5432).asInt(),
       base: env.get('DB_BASE').default('finper').asString(),
       user: env.get('DB_USER').required().asString(),
       pass: env.get('DB_PASS').required().asString(),
