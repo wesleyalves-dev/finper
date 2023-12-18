@@ -1,0 +1,10 @@
+{
+  "name": "finper",
+  "version": "0.0.0",
+  "repository": "https://github.com/wesleyalves-dev/finper.git",
+  "author": "Wesley Alves <wesley_alv@outlook.com>",
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
