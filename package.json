@@ -5,7 +5,12 @@
   "author": "Wesley Alves <wesley_alv@outlook.com>",
   "license": "MIT",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "backend": "yarn workspace @finper/backend",
+    "frontend": "yarn workspace @finper/frontend",
+    "preversion": "git checkout main && git pull",
+    "postversion": "git push && git push --tags"
+  },
   "dependencies": {},
   "devDependencies": {},
   "workspaces": [
