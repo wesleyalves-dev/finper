@@ -1,0 +1,9 @@
+{
+  "name": "@finper/frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "echo Not implemented yet"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
