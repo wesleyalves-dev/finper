@@ -23,6 +23,10 @@ module.exports = {
     sourceType: 'module',
     project: 'tsconfig.json'
   },
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-extraneous-class': {
+      allowEmpty: 'off'
+    }
+  },
   ignorePatterns: ['.eslintrc.js']
 }
