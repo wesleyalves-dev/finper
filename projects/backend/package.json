@@ -14,9 +14,11 @@
     "date-fns": "^3.0.0",
     "reflect-metadata": "^0.2.1",
     "rxjs": "^7.8.1",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "validations-br": "^1.4.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
     "@nestjs/testing": "^10.3.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/supertest": "^2.0.16",
