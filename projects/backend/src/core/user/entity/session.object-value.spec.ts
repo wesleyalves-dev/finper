@@ -11,6 +11,7 @@ describe('Session', () => {
       const newSession = await Session.create({})
       const existentSession = await Session.create(
         {
+          issuedAt: faker.date.past(),
           token: '659983d4-a8df-54f9-8300-66198a4d2a8d',
           expiresAt: faker.date.future()
         },
@@ -24,6 +25,7 @@ describe('Session', () => {
     it('espera lançar erro de validação', async () => {
       const badFn = async (): Promise<Session> =>
         await Session.create({
+          issuedAt: faker.date.future(),
           token: 'invalid-token',
           expiresAt: faker.date.past()
         })
@@ -34,7 +36,7 @@ describe('Session', () => {
 
   describe('isExpired', () => {
     it('espera saber se a sessão expirou', async () => {
-      const date = faker.date.future()
+      const date = faker.date.future() as Date
       const notExpiredSession = await sessionBuilder.withExpiresAt(date).build()
       const expiredSession = await sessionBuilder.build()
       Object.assign(expiredSession, { _expiresAt: faker.date.past() })

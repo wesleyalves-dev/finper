@@ -6,17 +6,21 @@ import { time } from '@core/@utils/time'
 import { SessionValidation } from './session.validation'
 
 export interface SessionProps {
+  issuedAt?: Date
   token?: string
   expiresAt?: Date
 }
 
 interface ConstructorProps {
+  issuedAt: Date
   token: Guid
   expiresAt: Date
 }
 
 export class Session extends ObjectValue {
   private readonly _id: Id
+
+  private readonly _issuedAt: Date
 
   private readonly _token: Guid
 
@@ -35,6 +39,7 @@ export class Session extends ObjectValue {
     const THIRTY_DAYS = 30
     return new Session(
       {
+        issuedAt: values.issuedAt ?? TODAY,
         token: new Guid(props.token),
         expiresAt: values.expiresAt ?? time.addDays(TODAY, THIRTY_DAYS)
       },
@@ -44,6 +49,10 @@ export class Session extends ObjectValue {
 
   get id(): Id {
     return this._id
+  }
+
+  get issuedAt(): Date {
+    return this._issuedAt
   }
 
   get token(): Guid {

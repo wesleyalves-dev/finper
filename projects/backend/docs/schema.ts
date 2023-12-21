@@ -1,18 +1,23 @@
 type Id = string
 
-interface User {
+export interface User {
   id: Id
   fullName: string
   document: string
   username: string
-  password: string
+  password: Password
   sessions: Session[]
   createdAt: Date
   updatedAt: Date
 }
 
+interface Password {
+  hash: string
+}
+
 interface Session {
   id: Id
+  issuedAt: Date
   token: string
   expiresAt: Date
 }
@@ -68,7 +73,7 @@ interface Asset {
 
 type PositionStatus = 'Open' | 'Closed'
 
-interface Position {
+export interface Position {
   id: Id
   status: PositionStatus
   asset: Asset

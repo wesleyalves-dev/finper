@@ -83,4 +83,14 @@ export class User extends Entity {
     this.setProps(values)
     this.refreshUpdatedAt()
   }
+
+  addSession(session: Session): void {
+    this._sessions.push(session)
+    this.refreshUpdatedAt()
+  }
+
+  removeSession(session: Session): void {
+    this._sessions = this._sessions.filter(s => s.id.value !== session.id.value)
+    this.refreshUpdatedAt()
+  }
 }

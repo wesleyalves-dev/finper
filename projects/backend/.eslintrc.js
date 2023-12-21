@@ -25,7 +25,9 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    '@typescript-eslint/no-extraneous-class': 'off'
+    '@typescript-eslint/no-extraneous-class': ['error', { allowEmpty: true }],
+    '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/no-throw-literal': 'off'
   },
   ignorePatterns: ['.eslintrc.js']
 }
