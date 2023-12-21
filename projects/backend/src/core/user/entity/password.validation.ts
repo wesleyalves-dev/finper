@@ -8,7 +8,7 @@ import {
   validateEntity
 } from '@core/@utils/validators'
 
-import { PasswordProps } from './password.object-value'
+import { type PasswordProps } from './password.object-value'
 
 const PASSWORD_REGEX =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_@$!%*?&-])[A-Za-z\d_@$!%*?&-]{8,50}$/

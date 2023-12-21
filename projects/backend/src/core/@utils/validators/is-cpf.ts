@@ -1,4 +1,4 @@
-import { registerDecorator, ValidationOptions } from 'class-validator'
+import { registerDecorator, type ValidationOptions } from 'class-validator'
 import { validateCPF } from 'validations-br'
 
 export function IsCpf(validationOptions?: ValidationOptions) {
@@ -6,7 +6,7 @@ export function IsCpf(validationOptions?: ValidationOptions) {
     registerDecorator({
       name: 'isCpf',
       target: object.constructor,
-      propertyName: propertyName,
+      propertyName,
       options: validationOptions,
       validator: {
         validate(value: string) {

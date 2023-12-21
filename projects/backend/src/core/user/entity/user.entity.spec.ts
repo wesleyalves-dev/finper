@@ -16,7 +16,7 @@ describe('User', () => {
         fullName: 'John Doe',
         document: '16343485082',
         username: 'john.doe@example.com',
-        password: password,
+        password,
         sessions: [session]
       })
 
@@ -35,8 +35,8 @@ describe('User', () => {
     it('espera lançar erro de validação', async () => {
       const password = await passwordBuilder.build()
 
-      const badFn = async () =>
-        User.create({
+      const badFn = async (): Promise<User> =>
+        await User.create({
           fullName: '',
           document: '123456789',
           username: 'john.doe',

@@ -1,8 +1,8 @@
 import { Entity } from '@core/@shared/entity'
 
 import { UserValidation } from './user.validation'
-import { Password } from './password.object-value'
-import { Session } from './session.object-value'
+import { type Password } from './password.object-value'
+import { type Session } from './session.object-value'
 
 export interface UserProps {
   fullName: string

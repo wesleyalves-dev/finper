@@ -3,7 +3,7 @@ import { faker } from '@core/@test/utils/faker'
 
 import { User } from '../../entity/user.entity'
 import { Password } from '../../entity/password.object-value'
-import { Session } from '../../entity/session.object-value'
+import { type Session } from '../../entity/session.object-value'
 
 export class UserBuilder extends Builder<User> {
   private _id?: string

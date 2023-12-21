@@ -7,7 +7,7 @@ describe('Id', () => {
 
     const randomId = new Id()
     const specificId = new Id(validUuidV4)
-    const badId = () => new Id(invalidUuidV4)
+    const badId = (): Id => new Id(invalidUuidV4)
 
     expect(typeof randomId.value).toEqual('string')
     expect(specificId.value).toEqual(validUuidV4)

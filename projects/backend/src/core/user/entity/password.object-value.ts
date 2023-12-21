@@ -14,7 +14,7 @@ export interface PasswordProps {
 }
 
 export class Password extends ObjectValue {
-  private _hash: string
+  private readonly _hash: string
 
   private constructor(props: { hash: string }) {
     super()
@@ -25,7 +25,10 @@ export class Password extends ObjectValue {
     const values = await new PasswordValidation().validate(props)
     const { hash: passwordHash, password } = values
     const { hash } = await new PasswordHashValidation().validate({
-      hash: password ? await passwordUtil.hash(password) : passwordHash
+      hash:
+        password !== undefined
+          ? await passwordUtil.hash(password)
+          : passwordHash
     })
 
     return new Password({ hash })

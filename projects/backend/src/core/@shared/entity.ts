@@ -9,8 +9,8 @@ export abstract class Entity {
 
   constructor(id?: string, createdAt?: Date, updatedAt?: Date) {
     this._id = new Id(id)
-    this._createdAt = createdAt || new Date()
-    this._updatedAt = updatedAt || new Date()
+    this._createdAt = createdAt ?? new Date()
+    this._updatedAt = updatedAt ?? new Date()
   }
 
   get id(): Id {

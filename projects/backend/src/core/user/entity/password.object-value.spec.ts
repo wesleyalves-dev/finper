@@ -21,8 +21,9 @@ describe('Password', () => {
     })
 
     it('espera lançar erro de validação', async () => {
-      const badEmptyInput = async () => await Password.create({})
-      const badWeakPassword = async () =>
+      const badEmptyInput = async (): Promise<Password> =>
+        await Password.create({})
+      const badWeakPassword = async (): Promise<Password> =>
         await Password.create({ password: 'weak' })
 
       await expect(badEmptyInput).rejects.toThrow('Entity validation failed')

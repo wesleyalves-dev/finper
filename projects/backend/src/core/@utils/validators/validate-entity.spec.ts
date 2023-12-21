@@ -16,10 +16,11 @@ describe('validateEntity', () => {
     const validEntity = new TestValidateEntity('Test')
     const invalidEntity = new TestValidateEntity(123)
 
-    const validOutput = await validateEntity(validEntity)
-    const badOutput = async () => validateEntity(invalidEntity)
+    await validateEntity(validEntity)
+    const badOutput = async (): Promise<void> => {
+      await validateEntity(invalidEntity)
+    }
 
-    expect(validOutput).toBeUndefined()
     await expect(badOutput()).rejects.toThrow()
   })
 })

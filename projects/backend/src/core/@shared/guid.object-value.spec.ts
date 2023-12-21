@@ -9,7 +9,7 @@ describe('Guid', () => {
 
     const randomGuid = new Guid()
     const specificGuid = new Guid(validGuid)
-    const badGuid = () => new Guid(invalidGuid)
+    const badGuid = (): Guid => new Guid(invalidGuid)
 
     expect(randomGuid.value).toMatch(guidRegex)
     expect(specificGuid.value).toMatch(guidRegex)

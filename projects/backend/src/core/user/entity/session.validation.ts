@@ -7,7 +7,7 @@ import {
   validateEntity
 } from '@core/@utils/validators'
 
-import { SessionProps } from './session.object-value'
+import { type SessionProps } from './session.object-value'
 
 export class SessionValidation extends Validation<SessionProps> {
   @IsUUID()

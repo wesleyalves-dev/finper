@@ -7,7 +7,7 @@ export class Id extends ObjectValue {
 
   constructor(value?: string) {
     super()
-    const uuid = value || generateUuidV4()
+    const uuid = value ?? generateUuidV4()
     this.validate(uuid)
     this._value = uuid
   }

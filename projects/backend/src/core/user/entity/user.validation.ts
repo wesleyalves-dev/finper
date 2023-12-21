@@ -8,7 +8,7 @@ import {
   validateEntity
 } from '@core/@utils/validators'
 
-import { UserProps } from './user.entity'
+import { type UserProps } from './user.entity'
 
 export class UserValidation extends Validation<UserProps> {
   @MaxLength(256)
