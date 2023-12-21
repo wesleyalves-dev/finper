@@ -28,7 +28,8 @@ module.exports = {
     '@typescript-eslint/no-extraneous-class': ['error', { allowEmpty: true }],
     '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/no-throw-literal': 'off',
-    '@typescript-eslint/no-unsafe-argument': 'off'
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off'
   },
   ignorePatterns: ['.eslintrc.js']
 }

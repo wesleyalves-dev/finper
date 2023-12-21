@@ -22,13 +22,13 @@ export class SignInUseCase extends UseCase<SignInInput, SignInOutput> {
 
     const user = await this.userRepository.findOne({ where: { username } })
 
-    if (user === undefined) {
+    if (!user) {
       throw new SignInError.InvalidCredentials({})
     }
 
     const isPasswordValid = await user.password.verify(password)
 
-    if (isPasswordValid === false) {
+    if (!isPasswordValid) {
       throw new SignInError.InvalidCredentials({})
     }
 

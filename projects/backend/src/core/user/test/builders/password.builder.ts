@@ -21,14 +21,13 @@ export class PasswordBuilder extends Builder<Password> {
   async build(): Promise<Password> {
     return await Password.create({
       hash: this._hash,
-      password:
-        this._hash !== undefined
-          ? undefined
-          : this._password ??
-            faker.internet.password({
-              length: 20,
-              prefix: 'aB10@!'
-            })
+      password: this._hash
+        ? undefined
+        : this._password ??
+          faker.internet.password({
+            length: 20,
+            prefix: 'aB10@!'
+          })
     })
   }
 }

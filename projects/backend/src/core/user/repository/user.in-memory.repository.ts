@@ -9,7 +9,7 @@ export class UserInMemoryRepository implements UserRepository {
   async getById(id: string): Promise<User> {
     const user = this.users.find(user => user.id.value === id)
 
-    if (user === undefined) {
+    if (!user) {
       throw new Error('Object not found')
     }
 
@@ -28,11 +28,11 @@ export class UserInMemoryRepository implements UserRepository {
   async save(entity: User): Promise<void> {
     const user = this.users.find(user => user.id.value === entity.id.value)
 
-    if (user === undefined) {
+    if (!user) {
       this.users.push(entity)
     }
 
-    if (user !== undefined) {
+    if (user) {
       this.users = this.users.map(user => {
         return user.id.value === entity.id.value ? entity : user
       })

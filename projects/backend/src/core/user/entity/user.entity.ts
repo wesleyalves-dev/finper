@@ -84,6 +84,10 @@ export class User extends Entity {
     this.refreshUpdatedAt()
   }
 
+  getSessionByToken(token: string): Session | undefined {
+    return this._sessions.find(session => session.token.value === token)
+  }
+
   addSession(session: Session): void {
     this._sessions.push(session)
     this.refreshUpdatedAt()
