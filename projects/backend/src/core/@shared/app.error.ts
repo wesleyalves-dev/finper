@@ -1,4 +1,4 @@
-export type ErrorCode = 'INTERNAL' | 'VALIDATION'
+export type ErrorCode = 'INTERNAL' | 'VALIDATION' | 'AUTHENTICATION'
 
 export interface ErrorDetails {
   description?: string
