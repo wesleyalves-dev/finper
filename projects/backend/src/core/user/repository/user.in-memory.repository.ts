@@ -26,8 +26,20 @@ export class UserInMemoryRepository implements UserRepository {
   }
 
   async save(entity: User): Promise<void> {
-    this.users = this.users.map(user => {
-      return user.id.value === entity.id.value ? entity : user
-    })
+    const user = this.users.find(user => user.id.value === entity.id.value)
+
+    if (user === undefined) {
+      this.users.push(entity)
+    }
+
+    if (user !== undefined) {
+      this.users = this.users.map(user => {
+        return user.id.value === entity.id.value ? entity : user
+      })
+    }
+  }
+
+  clean(): void {
+    this.users = []
   }
 }
