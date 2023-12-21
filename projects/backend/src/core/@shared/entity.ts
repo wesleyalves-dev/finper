@@ -24,4 +24,8 @@ export abstract class Entity {
   get updatedAt(): Date {
     return this._updatedAt
   }
+
+  refreshUpdatedAt(): void {
+    this._updatedAt = new Date()
+  }
 }
