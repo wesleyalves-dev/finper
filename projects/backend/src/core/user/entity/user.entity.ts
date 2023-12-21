@@ -89,8 +89,10 @@ export class User extends Entity {
     this.refreshUpdatedAt()
   }
 
-  removeSession(session: Session): void {
-    this._sessions = this._sessions.filter(s => s.id.value !== session.id.value)
+  removeSessionByToken(token: string): void {
+    this._sessions = this._sessions.filter(
+      session => session.token.value !== token
+    )
     this.refreshUpdatedAt()
   }
 }

@@ -56,7 +56,12 @@ export class UserBuilder extends Builder<User> {
         username: this._username ?? faker.internet.email(),
         password:
           this._password ??
-          (await Password.create({ password: faker.internet.password() })),
+          (await Password.create({
+            password: faker.internet.password({
+              length: 20,
+              prefix: 'aB10@!'
+            })
+          })),
         sessions: this._sessions ?? []
       },
       this._id
