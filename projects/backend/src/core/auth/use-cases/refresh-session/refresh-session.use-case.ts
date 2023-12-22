@@ -1,9 +1,9 @@
-import { UseCase } from '@core/@shared/use-case'
+import { type Context, UseCase } from '@core/@shared/use-case'
+import { Authenticate } from '@core/@shared/decorators/authenticate'
 import type { UserRepository } from '@core/user/repository/user.repository'
-import { ValidateInput } from '@core/@utils/validators'
 
 import type { AccessTokenService } from '../../services/access-token/access-token.service'
-import { RefreshSessionInput } from './refresh-session.input'
+import type { RefreshSessionInput } from './refresh-session.input'
 import type { RefreshSessionOutput } from './refresh-session.output'
 import { RefreshSessionError } from './refresh-session.error'
 
@@ -18,9 +18,12 @@ export class RefreshSessionUseCase extends UseCase<
     super()
   }
 
-  @ValidateInput(RefreshSessionInput)
-  async execute(input: RefreshSessionInput): Promise<RefreshSessionOutput> {
-    const { userId, refreshToken } = input
+  @Authenticate()
+  async execute(
+    _: RefreshSessionInput,
+    context: Context
+  ): Promise<RefreshSessionOutput> {
+    const { userId, refreshToken } = context.session
 
     const user = await this.userRepository.getById(userId)
     const session = user.getSessionByToken(refreshToken)

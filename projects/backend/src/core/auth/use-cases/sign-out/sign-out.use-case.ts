@@ -1,8 +1,8 @@
-import { UseCase } from '@core/@shared/use-case'
+import { type Context, UseCase } from '@core/@shared/use-case'
+import { Authenticate } from '@core/@shared/decorators/authenticate'
 import type { UserRepository } from '@core/user/repository/user.repository'
-import { ValidateInput } from '@core/@utils/validators'
 
-import { SignOutInput } from './sign-out.input'
+import type { SignOutInput } from './sign-out.input'
 import type { SignOutOutput } from './sign-out.output'
 
 export class SignOutUseCase extends UseCase<SignOutInput, SignOutOutput> {
@@ -10,9 +10,9 @@ export class SignOutUseCase extends UseCase<SignOutInput, SignOutOutput> {
     super()
   }
 
-  @ValidateInput(SignOutInput)
-  async execute(input: SignOutInput): Promise<SignOutOutput> {
-    const { userId, refreshToken } = input
+  @Authenticate()
+  async execute(_: SignOutInput, context: Context): Promise<SignOutOutput> {
+    const { userId, refreshToken } = context.session
 
     const user = await this.userRepository.getById(userId)
     user.removeSessionByToken(refreshToken)
