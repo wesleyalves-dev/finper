@@ -2,8 +2,8 @@ import { UserInMemoryRepository } from '@core/user/repository/user.in-memory.rep
 import { UserBuilder } from '@core/user/test/builders/user.builder'
 import { SessionBuilder } from '@core/user/test/builders/session.builder'
 import { AuthenticateError } from '@core/@shared/decorators/authenticate'
-import type { Context } from '@core/@shared/use-case'
 import { faker } from '@core/@test/utils/faker'
+import { createContextMocked } from '@core/@test/mocks/context.mock'
 
 import { createAccessTokenServiceMocked } from '../../test/access-token-service.mock'
 import { RefreshSessionUseCase } from './refresh-session.use-case'
@@ -23,37 +23,28 @@ describe('RefreshSessionUseCase', () => {
 
     it('espera lançar erro não estiver autenticado', async () => {
       const input = {}
-      const context = {
-        isAuthenticated: false,
-        session: {
-          userId: 'any_user_id',
-          refreshToken: 'any_refresh_token'
-        }
-      }
+      const context = createContextMocked({ isAuthenticated: false })
 
       const badFn = async (): Promise<any> =>
-        await useCase.execute(input, context as Context)
+        await useCase.execute(input, context)
 
       await expect(badFn).rejects.toThrow(AuthenticateError)
     })
 
     it('espera lançar erro quando a sessão não for encontrada', async () => {
-      const session = {
-        token: { value: '491626cd-7e2d-50aa-b254-48f25873ce0c' }
-      }
       const user = await userBuilder.withSessions([]).build()
       await userRepository.save(user)
       const input = {}
-      const context = {
+      const context = createContextMocked({
         isAuthenticated: true,
         session: {
           userId: user.id.value,
-          refreshToken: session.token.value
+          refreshToken: faker.string.uuid()
         }
-      }
+      })
 
       const badFn = async (): Promise<any> =>
-        await useCase.execute(input, context as Context)
+        await useCase.execute(input, context)
 
       await expect(badFn).rejects.toThrow(RefreshSessionError.InvalidSession)
     })
@@ -65,16 +56,13 @@ describe('RefreshSessionUseCase', () => {
       const user = await userBuilder.withSessions([session]).build()
       await userRepository.save(user)
       const input = {}
-      const context = {
+      const context = createContextMocked({
         isAuthenticated: true,
-        session: {
-          userId: user.id.value,
-          refreshToken: session.token.value
-        }
-      }
+        session: { userId: user.id.value, refreshToken: session.token.value }
+      })
 
       const badFn = async (): Promise<any> =>
-        await useCase.execute(input, context as Context)
+        await useCase.execute(input, context)
 
       await expect(badFn).rejects.toThrow(RefreshSessionError.SessionExpired)
     })
@@ -85,15 +73,12 @@ describe('RefreshSessionUseCase', () => {
       const user = await userBuilder.withSessions([session]).build()
       await userRepository.save(user)
       const input = {}
-      const context = {
+      const context = createContextMocked({
         isAuthenticated: true,
-        session: {
-          userId: user.id.value,
-          refreshToken: session.token.value
-        }
-      }
+        session: { userId: user.id.value, refreshToken: session.token.value }
+      })
 
-      const output = await useCase.execute(input, context as Context)
+      const output = await useCase.execute(input, context)
 
       expect(output).toEqual({
         accessToken: 'fake-access-token'

@@ -2,7 +2,7 @@ import { UserInMemoryRepository } from '@core/user/repository/user.in-memory.rep
 import { UserBuilder } from '@core/user/test/builders/user.builder'
 import { SessionBuilder } from '@core/user/test/builders/session.builder'
 import { AuthenticateError } from '@core/@shared/decorators/authenticate'
-import type { Context } from '@core/@shared/use-case'
+import { createContextMocked } from '@core/@test/mocks/context.mock'
 
 import { SignOutUseCase } from './sign-out.use-case'
 
@@ -19,10 +19,10 @@ describe('SignOutUseCase', () => {
 
     it('espera lançar erro quando não estiver autenticado', async () => {
       const input = {}
-      const context = { isAuthenticated: false }
+      const context = createContextMocked({ isAuthenticated: false })
 
       const badFn = async (): Promise<any> =>
-        await useCase.execute(input, context as Context)
+        await useCase.execute(input, context)
 
       await expect(badFn()).rejects.toThrow(AuthenticateError)
     })
@@ -32,12 +32,12 @@ describe('SignOutUseCase', () => {
       const user = await userBuilder.withSessions([session]).build()
       await userRepository.save(user)
       const input = {}
-      const context = {
+      const context = createContextMocked({
         isAuthenticated: true,
         session: { userId: user.id.value, refreshToken: session.token.value }
-      }
+      })
 
-      const output = await useCase.execute(input, context as Context)
+      const output = await useCase.execute(input, context)
 
       expect(output).toEqual({
         success: true

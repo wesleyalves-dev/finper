@@ -2,7 +2,7 @@ import { UserInMemoryRepository } from '@core/user/repository/user.in-memory.rep
 import { UserBuilder } from '@core/user/test/builders/user.builder'
 import { SessionBuilder } from '@core/user/test/builders/session.builder'
 import { AuthenticateError } from '@core/@shared/decorators/authenticate'
-import type { Context } from '@core/@shared/use-case'
+import { createContextMocked } from '@core/@test/mocks/context.mock'
 
 import { GetAccountUseCase } from './get-account.use-case'
 
@@ -21,10 +21,10 @@ describe('GetAccountUseCase', () => {
       const user = await userBuilder.build()
       await userRepository.save(user)
       const input = {}
-      const context = { isAuthenticated: false }
+      const context = createContextMocked({ isAuthenticated: false })
 
       const badFn = async (): Promise<any> =>
-        await useCase.execute(input, context as Context)
+        await useCase.execute(input, context)
 
       await expect(badFn).rejects.toThrow(AuthenticateError)
     })
@@ -34,15 +34,14 @@ describe('GetAccountUseCase', () => {
       const user = await userBuilder.withSessions([session]).build()
       await userRepository.save(user)
       const input = {}
-      const context = {
-        isAuthenticated: true,
+      const context = createContextMocked({
         session: {
           userId: user.id.value,
           refreshToken: session.token.value
         }
-      }
+      })
 
-      const output = await useCase.execute(input, context as Context)
+      const output = await useCase.execute(input, context)
 
       expect(output).toEqual({
         data: {
