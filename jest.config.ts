@@ -13,7 +13,8 @@ export default {
       },
       preset: 'ts-jest',
       moduleNameMapper: {
-        '@core/(.*)$': '<rootDir>src/core/$1'
+        '@core/(.*)$': '<rootDir>src/core/$1',
+        '@infra/(.*)$': '<rootDir>src/infra/$1'
       }
     },
     {

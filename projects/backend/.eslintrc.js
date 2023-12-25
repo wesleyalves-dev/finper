@@ -29,7 +29,8 @@ module.exports = {
     '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/no-throw-literal': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
-    '@typescript-eslint/strict-boolean-expressions': 'off'
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    '@typescript-eslint/consistent-type-imports': 'off'
   },
   ignorePatterns: ['.eslintrc.js']
 }
