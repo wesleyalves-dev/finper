@@ -3,7 +3,7 @@ import type { UserRepository } from '@core/user/repository/user.repository'
 import { Session } from '@core/user/entity/session.object-value'
 import { ValidateInput } from '@core/@utils/validators'
 
-import type { AccessTokenService } from '../../services/access-token/access-token.service'
+import type { AccessTokenService } from '../../services/access-token.service'
 import { SignInInput } from './sign-in.input'
 import type { SignInOutput } from './sign-in.output'
 import { SignInError } from './sign-in.error'

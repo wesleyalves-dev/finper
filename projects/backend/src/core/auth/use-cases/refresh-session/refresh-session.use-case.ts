@@ -2,7 +2,7 @@ import { type Context, UseCase } from '@core/@shared/use-case'
 import { Authenticate } from '@core/@shared/decorators/authenticate'
 import type { UserRepository } from '@core/user/repository/user.repository'
 
-import type { AccessTokenService } from '../../services/access-token/access-token.service'
+import type { AccessTokenService } from '../../services/access-token.service'
 import type { RefreshSessionInput } from './refresh-session.input'
 import type { RefreshSessionOutput } from './refresh-session.output'
 import { RefreshSessionError } from './refresh-session.error'
