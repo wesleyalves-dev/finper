@@ -7,7 +7,7 @@ export default {
     {
       displayName: 'backend',
       rootDir: 'projects/backend',
-      testMatch: ['**/*.spec.ts'],
+      testMatch: ['**/*.spec.ts', '**/*.test.ts'],
       transform: {
         '^.+\\.ts?$': 'ts-jest'
       },
