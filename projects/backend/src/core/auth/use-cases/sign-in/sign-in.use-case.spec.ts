@@ -10,6 +10,7 @@ import { SignInError } from './sign-in.error'
 describe('SignInUseCase', () => {
   const userRepository = new UserInMemoryRepository()
   const accessTokenService = createAccessTokenServiceMocked()
+  accessTokenService.generate.mockReturnValue('fake-access-token')
   const useCase = new SignInUseCase(userRepository, accessTokenService)
   const userBuilder = new UserBuilder()
   const passwordBuilder = new PasswordBuilder()

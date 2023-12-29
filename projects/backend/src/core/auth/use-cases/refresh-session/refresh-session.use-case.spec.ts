@@ -12,6 +12,7 @@ import { RefreshSessionError } from './refresh-session.error'
 describe('RefreshSessionUseCase', () => {
   const userRepository = new UserInMemoryRepository()
   const accessTokenService = createAccessTokenServiceMocked()
+  accessTokenService.generate.mockReturnValue('fake-access-token')
   const useCase = new RefreshSessionUseCase(userRepository, accessTokenService)
   const userBuilder = new UserBuilder()
   const sessionBuilder = new SessionBuilder()
