@@ -1,0 +1,15 @@
+version: '3.8'
+
+name: finper
+
+services:
+  app:
+    build:
+      context: .
+    container_name: finper
+    command: tail -f /dev/null
+    volumes:
+      - ./:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - $PORT:$PORT
