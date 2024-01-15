@@ -6,4 +6,5 @@ export interface UserRepository extends Repository<User> {
   getById: (id: string) => Promise<User>
   findOne: (options: FindOneOptions<User>) => Promise<User | undefined>
   save: (entity: User) => Promise<void>
+  clean?: () => Promise<void>
 }

@@ -8,7 +8,7 @@ import { GlobalModule } from './global.module'
 import { ConfigModule } from './config.module'
 import { ErrorHandlerProvider } from './providers'
 import { AuthMiddleware } from './middleware'
-import { AuthModule } from './modules'
+import { AuthModule } from './features'
 
 @Module({
   providers: [ErrorHandlerProvider],

@@ -39,7 +39,7 @@ export class UserInMemoryRepository implements UserRepository {
     }
   }
 
-  clean(): void {
+  async clean(): Promise<void> {
     this.users = []
   }
 }
