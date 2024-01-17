@@ -4,8 +4,7 @@ import {
   type NestModule
 } from '@nestjs/common'
 
-import { GlobalModule } from './global.module'
-import { ConfigModule } from './config.module'
+import { GlobalModule, ConfigModule } from './modules'
 import { ErrorHandlerProvider } from './providers'
 import { AuthMiddleware } from './middleware'
 import { AuthModule } from './features'

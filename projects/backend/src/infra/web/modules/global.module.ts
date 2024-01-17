@@ -1,6 +1,6 @@
 import { Global, Module } from '@nestjs/common'
 
-import { AccessTokenProvider, UserRepositoryProvider } from './providers'
+import { AccessTokenProvider, UserRepositoryProvider } from '../providers'
 
 @Global()
 @Module({
