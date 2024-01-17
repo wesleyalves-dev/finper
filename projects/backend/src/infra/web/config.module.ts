@@ -8,11 +8,11 @@ export class ConfigModule extends NestConfigModule {
       load: [
         () => ({
           session: {
-            privateKey: '',
-            publicKey: '',
+            privateKey: process.env.SESSION_PRIVATE_KEY,
+            publicKey: process.env.SESSION_PUBLIC_KEY,
             cookie: {
-              accessToken: { name: '' },
-              refreshToken: { name: '' }
+              accessToken: { name: '@finper/access-token' },
+              refreshToken: { name: '@finper/refresh-token' }
             }
           }
         })
