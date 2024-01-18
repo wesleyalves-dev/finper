@@ -7,6 +7,9 @@ export class ConfigModule extends NestConfigModule {
       isGlobal: true,
       load: [
         () => ({
+          server: {
+            port: Number(process.env.BACKEND_PORT ?? 5000)
+          },
           log: {
             enabled: true,
             level: 'trace'
