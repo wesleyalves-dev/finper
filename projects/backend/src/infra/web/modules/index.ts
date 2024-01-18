@@ -1,2 +1,3 @@
-export { ConfigModule } from './config.module'
-export { GlobalModule } from './global.module'
+export { ConfigModule } from './config/config.module'
+export { GlobalModule } from './global/global.module'
+export { LoggerModule } from './logger/logger.module'

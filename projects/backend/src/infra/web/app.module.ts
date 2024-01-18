@@ -4,14 +4,14 @@ import {
   type NestModule
 } from '@nestjs/common'
 
-import { GlobalModule, ConfigModule } from './modules'
+import { GlobalModule, ConfigModule, LoggerModule } from './modules'
 import { ErrorHandlerProvider } from './providers'
 import { AuthMiddleware } from './middleware'
 import { AuthModule } from './features'
 
 @Module({
   providers: [ErrorHandlerProvider],
-  imports: [GlobalModule, ConfigModule.forRoot(), AuthModule]
+  imports: [GlobalModule, ConfigModule.forRoot(), LoggerModule, AuthModule]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {

@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core'
+import { Logger } from '@nestjs/common'
 import helmet from 'helmet'
 import cookies from 'cookie-parser'
 
@@ -9,7 +10,8 @@ async function bootstrap(): Promise<void> {
   app.use(helmet())
   app.use(cookies())
   await app.listen(3000)
-  console.log('Online')
+  const logger = app.get<Logger>('Logger')
+  logger.log('Online')
 }
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises

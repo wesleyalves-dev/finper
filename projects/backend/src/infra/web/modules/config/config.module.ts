@@ -7,6 +7,10 @@ export class ConfigModule extends NestConfigModule {
       isGlobal: true,
       load: [
         () => ({
+          log: {
+            enabled: true,
+            level: 'trace'
+          },
           session: {
             privateKey: process.env.SESSION_PRIVATE_KEY,
             publicKey: process.env.SESSION_PUBLIC_KEY,
