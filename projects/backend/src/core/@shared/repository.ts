@@ -1,13 +1,13 @@
-export type Where<Entity> = { [key in keyof Entity]?: Entity[key] }
+export type Where<Entity> = { [key in keyof Entity]?: any }
 
 export type Order<Entity> = { [key in keyof Entity]?: 'ASC' | 'DESC' }
 
 export interface FindOneOptions<Entity> {
-  where?: Where<Entity>
+  where?: Array<Where<Entity>>
 }
 
 export interface ListOptions<Entity> {
-  where?: Where<Entity>
+  where?: Array<Where<Entity>>
   order?: Order<Entity>
   take?: number
   skip?: number
