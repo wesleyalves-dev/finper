@@ -13,3 +13,16 @@ services:
       - /usr/app/node_modules
     ports:
       - $PORT:$PORT
+    depends_on:
+      - database
+
+  database:
+    image: postgres:14-alpine
+    container_name: finper-database
+    volumes:
+      - ./dev/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:$DB_PORT
+    environment:
+      POSTGRES_DB: $DB_BASE
+      POSTGRES_PASSWORD: $DB_PASS
