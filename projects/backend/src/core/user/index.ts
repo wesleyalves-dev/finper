@@ -1,6 +1,9 @@
 export { User } from './entity/user.entity'
-export type { UserRepository } from './repository/user.repository'
-export { UserInMemoryRepository } from './repository/user.in-memory.repository'
+export {
+  type UserRepository,
+  UserInMemoryRepository,
+  UserTypeOrmRepository
+} from './repository'
 export { UserBuilder } from './test/builders/user.builder'
 export { SessionBuilder } from './test/builders/session.builder'
 export { PasswordBuilder } from './test/builders/password.builder'

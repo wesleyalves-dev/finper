@@ -6,7 +6,7 @@ import {
   UpdateDateColumn
 } from 'typeorm'
 
-import { SessionTypeOrmModel } from './session.typeorm.model'
+import { SessionTypeOrmNested } from './session.typeorm.nested'
 
 @Entity({ name: 'users' })
 export class UserTypeOrmModel {
@@ -25,8 +25,8 @@ export class UserTypeOrmModel {
   @Column({ name: 'password' })
   password: string
 
-  @Column({ name: 'sessions' })
-  sessions: SessionTypeOrmModel[]
+  @Column({ name: 'sessions', type: 'json' })
+  sessions: SessionTypeOrmNested[]
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date

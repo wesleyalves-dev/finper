@@ -1,4 +1,4 @@
-import { UserInMemoryRepository } from '@core/user/repository/user.in-memory.repository'
+import { UserInMemoryRepository } from '@core/user/repository'
 import { UserBuilder } from '@core/user/test/builders/user.builder'
 import { SessionBuilder } from '@core/user/test/builders/session.builder'
 import { AuthenticateError } from '@core/@shared/decorators/authenticate'

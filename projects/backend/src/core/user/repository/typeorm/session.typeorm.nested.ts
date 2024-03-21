@@ -1,4 +1,4 @@
-export class SessionTypeOrmModel {
+export class SessionTypeOrmNested {
   id: string
 
   token: string
@@ -7,7 +7,7 @@ export class SessionTypeOrmModel {
 
   expiresAt: Date
 
-  constructor(values: SessionTypeOrmModel) {
+  constructor(values: SessionTypeOrmNested) {
     Object.assign(this, values)
   }
 }

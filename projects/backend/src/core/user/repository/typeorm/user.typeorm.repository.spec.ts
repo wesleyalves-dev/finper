@@ -1,8 +1,8 @@
 import type { User } from '@core/user'
 
-import { UserBuilder } from '../test/builders/user.builder'
-import { PasswordBuilder } from '../test/builders/password.builder'
-import { SessionBuilder } from '../test/builders/session.builder'
+import { UserBuilder } from '../../test/builders/user.builder'
+import { PasswordBuilder } from '../../test/builders/password.builder'
+import { SessionBuilder } from '../../test/builders/session.builder'
 import { UserTypeOrmRepository } from './user.typeorm.repository'
 
 describe('UserTypeOrmRepository', () => {

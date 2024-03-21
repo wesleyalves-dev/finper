@@ -1,7 +1,7 @@
 import type { FindOneOptions } from '@core/@shared/repository'
 
-import type { User } from '../entity/user.entity'
-import type { UserRepository } from './user.repository'
+import type { User } from '../../entity/user.entity'
+import type { UserRepository } from '../user.repository'
 
 export class UserInMemoryRepository implements UserRepository {
   private users: User[] = []

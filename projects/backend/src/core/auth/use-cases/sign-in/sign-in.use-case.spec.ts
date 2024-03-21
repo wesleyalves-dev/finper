@@ -1,4 +1,4 @@
-import { UserInMemoryRepository } from '@core/user/repository/user.in-memory.repository'
+import { UserInMemoryRepository } from '@core/user/repository'
 import { UserBuilder } from '@core/user/test/builders/user.builder'
 import { PasswordBuilder } from '@core/user/test/builders/password.builder'
 import { ValidateInputError } from '@core/@utils/validators'

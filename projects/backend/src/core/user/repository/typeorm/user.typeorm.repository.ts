@@ -3,12 +3,12 @@ import type { DataSource, Repository as OrmRepository } from 'typeorm'
 import type { Database } from '@core/@shared/database'
 import type { FindOneOptions } from '@core/@shared/repository'
 
-import { User } from '../entity/user.entity'
-import { Password } from '../entity/password.object-value'
-import { Session } from '../entity/session.object-value'
-import type { UserRepository } from './user.repository'
+import { User } from '../../entity/user.entity'
+import { Password } from '../../entity/password.object-value'
+import { Session } from '../../entity/session.object-value'
+import type { UserRepository } from '../user.repository'
 import { UserTypeOrmModel } from './user.typeorm.model'
-import { SessionTypeOrmModel } from './session.typeorm.model'
+import { SessionTypeOrmNested } from './session.typeorm.nested'
 
 export class UserTypeOrmRepository implements UserRepository {
   private readonly userRepository: OrmRepository<UserTypeOrmModel>
@@ -53,7 +53,7 @@ export class UserTypeOrmRepository implements UserRepository {
       username: entity.username,
       password: entity.password.hash,
       sessions: entity.sessions.map(session => {
-        return new SessionTypeOrmModel({
+        return new SessionTypeOrmNested({
           id: session.id.value,
           token: session.token.value,
           issuedAt: session.issuedAt,
